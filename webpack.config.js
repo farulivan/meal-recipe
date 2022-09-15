@@ -3,7 +3,7 @@ const path = require('path');
 const isProduction = process.env.NODE_ENV === 'production';
 
 const config  = {
-  entry: './src/index.js',
+  entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'main.js',
@@ -11,7 +11,7 @@ const config  = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: './src/index.html',
     }),
   ],
   module: {
