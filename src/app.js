@@ -1,8 +1,9 @@
 import 'regenerator-runtime'
 import './styles/style.css'
-// import './components/app-bar.js'
-import './components/header-intro.js'
-// import main from './view/main.js'
+import './components/nav-bar.js'
+import './components/random-pick'
+// import './components/header-intro.js'
+import main from './view/main.js'
 
 // const hello = document.createElement('h1');
 // const wrapper = document.createElement('div');
@@ -21,4 +22,4 @@ import './components/header-intro.js'
 // wrapper.appendChild(hello);
 // document.body.appendChild(wrapper);
 
-// document.addEventListener('DOMContentLoaded', main)
+document.addEventListener('DOMContentLoaded', main)

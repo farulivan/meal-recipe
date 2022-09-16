@@ -10,16 +10,14 @@ class HeaderIntro extends HTMLElement {
 
   render() {
     this.innerHTML = `
-      <div 
-        class="container flex w-full h-screen justify-center items-center"
+      <h1 
+      class="bg-gradient-to-r from-green-400 to-blue-500 text-transparent text-9xl bg-clip-text font-extrabold"
       >
-        <h1 
-        class="bg-gradient-to-r from-green-400 to-blue-500 text-transparent text-9xl bg-clip-text font-extrabold"
-        >
-          Hello World yo!
-        </h1>
-      </div>
+        Hello World yo!
+      </h1>
+      <p>Hello again!</p>
     `
+    this.className = 'container flex w-full h-screen justify-center items-center'
   }
   
 
