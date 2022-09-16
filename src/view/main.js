@@ -3,8 +3,6 @@ import '../components/random-pick'
 
 const main = () => {
     const randomPickElement = document.querySelector('random-pick')
-    console.log(randomPickElement)
-    console.log(MealData.pickRandomRecipe(a => a.strMeal))
     const renderResult = results => {
         randomPickElement.meal = results
     }

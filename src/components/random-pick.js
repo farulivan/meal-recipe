@@ -3,18 +3,14 @@ class RandomPick extends HTMLElement {
         this._meal = meal;
         this.render()
     }
-
-    connectedCallback() {
-        this.render()
-    }
   
     render() {
-      this.innerHTML = `
-        <p>Hallo :${this._meal[0].strMeal}</p>
-      `
-      this.className = "flex justify-center items-center m-6"
-        console.log(this._meal[0].strMeal)
+        this.innerHTML = 
+            this._meal !== undefined ?
+                `<p>Hallo :${this._meal[0].strMeal}</p>` 
+                    : `loading`
         
+        this.className = "flex justify-center items-center m-6"
     }
     
   
