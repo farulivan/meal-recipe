@@ -1,17 +1,17 @@
 class CategoriesButton extends HTMLElement {
-    connectedCallback(){
+    set categories(categories){
+        this._categories = categories
         this.render()
     }
-
+    
     render(){
-        const categories = ['Pizza', 'Chicken', 'Beef', 'Seafood', 'Chicken2', 'Beef2', 'Seafood2']
         this.innerHTML = `
             <div class="flex overflow-scroll py-5" >
-                ${categories.map(category => {
+                ${this._categories.map(category => {
                     return `
                         <div>
                             <input 
-                                id=${category}
+                                id=${category.strCategory}
                                 type="radio"
                                 class="hidden peer"
                                 name="category"
@@ -19,10 +19,10 @@ class CategoriesButton extends HTMLElement {
                             >
                             </input>
                             <label 
-                                for=${category}
+                                for=${category.strCategory}
                                 class="bg-slate-200 font-bold mx-2 px-3 py-1 rounded-xl cursor-pointer peer-checked:bg-emerald-300 hover:bg-slate-300"
                             >
-                                ${category}
+                                ${category.strCategory}
                             </label>
                         </div>
                     `

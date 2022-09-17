@@ -1,5 +1,5 @@
 class RecipeList extends HTMLElement {
-    set meal(meal) {
+    set meals(meal) {
         this._meal = meal;
         this.render()
     }
