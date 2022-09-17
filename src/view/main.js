@@ -8,8 +8,8 @@ const main = () => {
     const main = document.querySelector('main')
     main.className = 'm-6'
 
-    const categories = document.querySelector('categories-button')
-    categories.addEventListener('click', (e) => e.pointerId === -1 && console.log(e.target.id))
+    // const categories = document.querySelector('categories-button')
+    // categories.addEventListener('click', (e) => e.pointerId === -1 && console.log(e.target.id))
 
     // const recipeListElement = document.querySelector('recipe-list')
     // const renderRecipes = results => {
@@ -57,6 +57,27 @@ const main = () => {
         }
     }
     pickCategories()
+
+    // for Recipe list
+    const recipeListElement = document.querySelector('recipe-list')
+    const renderRecipeList = results => {
+        recipeListElement.meal = results
+    }
+    const fallbackRecipeList = message => {
+        recipeListElement.renderError(message)
+    }
+    
+    const getRecipes = async () => {
+        try {
+            const result = await MealData.getRecipes()
+            renderRecipeList(result)
+        } catch (message){
+            fallbackRecipeList(message)
+        }
+    }
+
+    // to detect click in the categories list
+    categoriesElement.clickEvent = getRecipes
 }
 
 export default main

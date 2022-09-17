@@ -4,6 +4,17 @@ class CategoriesButton extends HTMLElement {
         this.render()
     }
     
+    set clickEvent(event){
+        this._clickEvent = event
+        // this.render()
+    }
+
+    // get value(){
+    //     return this.clickEvent(e)
+    // }
+
+
+
     render(){
         this.innerHTML = `
             <div class="flex overflow-scroll py-5" >
@@ -13,7 +24,7 @@ class CategoriesButton extends HTMLElement {
                             <input 
                                 id=${category.strCategory}
                                 type="radio"
-                                class="hidden peer"
+                                class="hidden peer input-categories"
                                 name="category"
                                 
                             >
@@ -29,6 +40,11 @@ class CategoriesButton extends HTMLElement {
                 }).join('')}
             </div>
         `
+
+        this.addEventListener('click', this._clickEvent
+        // (e) => e.pointerId === -1 && clickEvent(e.target.id)
+        )
+        
     }
 
 }
