@@ -8,18 +8,6 @@ const main = () => {
     const main = document.querySelector('main')
     main.className = 'm-6'
 
-    // const categories = document.querySelector('categories-button')
-    // categories.addEventListener('click', (e) => e.pointerId === -1 && console.log(e.target.id))
-
-    // const recipeListElement = document.querySelector('recipe-list')
-    // const renderRecipes = results => {
-    //     recipeListElement.meal = results
-    // }
-    
-    // const fallbackRecipes = message => {
-    // recipeListElement.renderError(message)
-    // }
-
     //for Random Pick : 
     const randomPickElement = document.querySelector('random-pick')
     const renderOneRecipe = results => {
@@ -67,14 +55,17 @@ const main = () => {
         recipeListElement.renderError(message)
     }
     
-    const getRecipes = async () => {
+    const getRecipes = categoriesElement.addEventListener('click', async function(e) {
         try {
-            const result = await MealData.getRecipes()
-            renderRecipeList(result)
+            if(e.pointerId === -1){
+                const category = e.target.id
+                const result = await MealData.getRecipes(category)
+                renderRecipeList(result)
+            }
         } catch (message){
             fallbackRecipeList(message)
         }
-    }
+    })
 
     // to detect click in the categories list
     categoriesElement.clickEvent = getRecipes
