@@ -6,7 +6,6 @@ class CategoriesButton extends HTMLElement {
     render(){
         const categories = ['Pizza', 'Chicken', 'Beef', 'Seafood', 'Chicken2', 'Beef2', 'Seafood2']
         this.innerHTML = `
-            <h3>
             <div class="flex overflow-scroll py-5" >
                 ${categories.map(category => {
                     return `
@@ -16,7 +15,6 @@ class CategoriesButton extends HTMLElement {
                                 type="radio"
                                 class="hidden peer"
                                 name="category"
-                                value=${category}
                                 
                             >
                             </input>
@@ -31,8 +29,6 @@ class CategoriesButton extends HTMLElement {
                 }).join('')}
             </div>
         `
-
-        // this.className = ''
     }
 
 }

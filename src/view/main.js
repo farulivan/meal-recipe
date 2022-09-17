@@ -7,6 +7,8 @@ const main = () => {
     const main = document.querySelector('main')
     main.className = 'm-6'
 
+    const categories = document.querySelector('categories-button')
+    categories.addEventListener('click', (e) => e.pointerId === -1 && console.log(e.target.id))
 
     const randomPickElement = document.querySelector('random-pick')
     const renderResult = results => {
