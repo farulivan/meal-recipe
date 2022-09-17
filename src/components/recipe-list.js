@@ -1,9 +1,13 @@
 class RecipeList extends HTMLElement {
+    constructor(){
+        super()
+    }
+    
     set meal(meal) {
         this._meal = meal;
         this.render()
     }
-    
+
     render(){
         this.innerHTML = this._meal.map(recipe => {
             return `
