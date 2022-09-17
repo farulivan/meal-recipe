@@ -2,6 +2,7 @@ import 'regenerator-runtime'
 import './styles/style.css'
 import './components/nav-bar.js'
 import './components/random-pick'
+import './components/categories-button'
 // import './components/header-intro.js'
 import main from './view/main.js'
 

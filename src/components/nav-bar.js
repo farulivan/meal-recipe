@@ -6,7 +6,7 @@ class NavBar extends HTMLElement {
     render() {
       this.innerHTML = `
         <h3 
-            class="text-xl font-bold"
+            class="text-lg font-bold"
         >
             meal<span class="font-extrabold">recipe</span>
         </h3>
