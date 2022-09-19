@@ -1,7 +1,6 @@
 import MealData from "../data/meal-data"
 import '../components/random-pick'
 import '../components/recipe-list'
-import { get } from "lodash"
 
 const main = () => {
     //styling main element

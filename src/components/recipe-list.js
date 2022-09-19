@@ -2,25 +2,24 @@ import axios from "axios";
 import _ from "lodash";
 
 class RecipeList extends HTMLElement {
-    constructor(){
-        super()
-        this.showRecipeDetail = false
-    }
-    
     set meal(meal) {
         this._meal = meal;
         this.render()
     }
 
     async recipeDetail(e){
-        // get detail data from api
+        // get detail data from API
         const getDetail = async () => {
         return await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${e}`)
                 .then(response => response.data.meals[0])
                 .catch(error => console.log(error.message))
         }
+
         // process the data and show in the UI
         getDetail().then(recipe => {
+            window.scroll(0,0)
+
+            // process the ingridients data 
             const ingridients = []
             const measures = []
             for(let [key, value] of Object.entries(recipe)){
@@ -30,9 +29,9 @@ class RecipeList extends HTMLElement {
                     measures.push(value)
                 }
             }
+            let ingridientsArr = ingridients.map((value, index) => [value, measures[index]]) 
             
-            let ingridientsArr = ingridients.map((value, index) => [value, measures[index]])
-            
+            // show recipe detail
             this.innerHTML = `
             <div class="col-span-2" id="${recipe.idMeal}">
                 <img class="rounded-xl" src="${recipe.strMealThumb}" />
@@ -55,8 +54,18 @@ class RecipeList extends HTMLElement {
                         `)
                     .join('')}
                 </ol>
+                <button id="back-button" class="bg-emerald-800 text-white font-bold text-xs rounded-lg py-2 px-4 mt-4">Back</button>
             </div>
             `
+            
+            // back action
+            const backButton = document.querySelector('#back-button')
+            const categoryButton = document.getElementById(recipe.strCategory)
+            backButton.addEventListener('click', () => {
+                this.innerHTML = ''
+                categoryButton.click()
+                window.scroll(0,0)
+            })
         })
     }
 
@@ -76,8 +85,6 @@ class RecipeList extends HTMLElement {
         }).join('')
         this.className = "grid grid-cols-2 gap-4 mt-5"
     }
-
-
 }
 
 customElements.define('recipe-list', RecipeList)
