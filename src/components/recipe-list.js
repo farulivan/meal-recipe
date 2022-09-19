@@ -49,9 +49,12 @@ class RecipeList extends HTMLElement {
                 <p class="bg-slate-100 w-full font-bold mt-2 p-2 text-center text-emerald-700 border-b-2 border-emerald-700">Directions</p>
                 <ol class="space-y-1 list-inside list-decimal">
                     ${
-                        _.split(recipe.strInstructions, '\r\n').map(step => `
-                            <li class="space-x-3 my-3">${step}</li>
-                        `)
+                        _.split(recipe.strInstructions, '\r\n').map(step => {
+                            if(step !== ''){
+                                return `<li class="space-x-3 my-3">${step}</li>`
+                            }
+                                
+                        })
                     .join('')}
                 </ol>
                 <button id="back-button" class="bg-emerald-800 text-white font-bold text-xs rounded-lg py-2 px-4 mt-4">Back</button>
