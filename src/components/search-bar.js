@@ -9,16 +9,25 @@ class SearchBar extends HTMLElement {
         }
         getSearchRecipe().then(recipeArr => {
             const recipeList = document.querySelector('recipe-list')
-            recipeList.innerHTML = recipeArr.map(recipe => {
-                return `
-                <div id="${recipe.idMeal}" class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
-                    <div class="overflow-hidden">
-                    <img id="${recipe.idMeal}" class="rounded-t-lg hover:scale-110" src="${recipe.strMealThumb}" alt="${recipe.strMeal} picture">
-                    </div>
-                    <h5 id="${recipe.idMeal}" class="text-sm font-medium text-slate-500 p-3 md:text-xl lg:text-center">${recipe.strMeal}</h5>
+            if(recipeArr === null){
+                recipeList.innerHTML = `
+                <div class="p-10 col-span-2 md:col-span-3">
+                    <p class="font-bold text-xl">Oops, we don't have that recipe</p>
+                    <p class="font-medium text-md text-slate-500">Please try another keyword or click one of the categories</p>
                 </div>
                 `
-            }).join('')
+            } else {
+                recipeList.innerHTML = recipeArr.map(recipe => {
+                    return `
+                    <div id="${recipe.idMeal}" class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
+                        <div class="overflow-hidden">
+                        <img id="${recipe.idMeal}" class="rounded-t-lg hover:scale-110" src="${recipe.strMealThumb}" alt="${recipe.strMeal} picture">
+                        </div>
+                        <h5 id="${recipe.idMeal}" class="text-sm font-medium text-slate-500 p-3 md:text-xl lg:text-center">${recipe.strMeal}</h5>
+                    </div>
+                    `
+                }).join('')
+            }
         })
     }
     
