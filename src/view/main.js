@@ -1,30 +1,10 @@
 import MealData from "../data/meal-data"
-import '../components/random-pick'
 import '../components/recipe-list'
 
 const main = () => {
     //styling main element
     const main = document.querySelector('main')
     main.className = 'm-6'
-
-    //for Random Pick : 
-    const randomPickElement = document.querySelector('random-pick')
-    const renderOneRecipe = results => {
-        randomPickElement.meal = results
-    }
-    const fallbackOneRecipe = message => {
-        randomPickElement.renderError(message)
-    }
-    
-    const pickRecipe = async () => {
-        try {
-            const result = await MealData.getOneRecipe()
-            renderOneRecipe(result)
-        } catch (message) {
-            fallbackOneRecipe(message)
-        }
-    }
-    pickRecipe()
 
     // for Categories :
     const categoriesElement = document.querySelector('categories-button')

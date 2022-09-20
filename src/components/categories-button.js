@@ -39,6 +39,7 @@ class CategoriesButton extends HTMLElement {
         
         //click the Beef categories when page load
         document.getElementById('Beef').click()
+        // document.getElementById('Beef').unbind('click')
     }
 
 }
