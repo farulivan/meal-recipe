@@ -13,7 +13,7 @@ class SearchBar extends HTMLElement {
                 recipeList.innerHTML = `
                 <div class="p-10 col-span-2 md:col-span-3">
                     <p class="font-bold text-xl">Oops, we don't have that recipe</p>
-                    <p class="font-medium text-md text-slate-500">Please try another keyword or click one of the categories</p>
+                    <p class="font-medium text-md text-slate-500">Please try another keyword or choose one of the categories</p>
                 </div>
                 `
             } else {
