@@ -35,11 +35,14 @@ class SearchBar extends HTMLElement {
         this.className = "flex items-center mt-4 lg:w-full"
         this.render()
         const keyword = this.querySelector('#simple-search')
+        //listen to searchButton click
         this.querySelector('#submit-search')
             .addEventListener('click', (e) => {
                 e.preventDefault()
                 this.showSearchRecipe(keyword.value)
             })
+        //listen to Enter keyboard input
+        keyword.addEventListener('keyup', (e) => e.key === "Enter" && this.showSearchRecipe(keyword.value))
     }
   
     render() {
