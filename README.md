@@ -1,2 +1,2 @@
 # meal-recipe
-search for a recipe to help user cook something
+Search for recipes to help people cook something delicious
