@@ -23,9 +23,9 @@ class RecipeList extends HTMLElement {
             const ingridients = []
             const measures = []
             for(let [key, value] of Object.entries(recipe)){
-                if(key.includes('strIngredient') && value !== ''){
+                if(key.includes('strIngredient') && value !== '' && value !== null && value !== undefined){
                     ingridients.push(value)
-                } else if(key.includes('strMeasure') && value !== ''){
+                } else if(key.includes('strMeasure') && value !== '' && value !== null && value !== undefined){
                     measures.push(value)
                 }
             }
