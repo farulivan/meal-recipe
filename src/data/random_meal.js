@@ -1,3 +1,4 @@
+//this randomMeal only for mockup purposes
 const randomMeal = {
     "meals": [
         {

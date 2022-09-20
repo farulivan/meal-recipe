@@ -98,8 +98,3 @@ class RecipeList extends HTMLElement {
 }
 
 customElements.define('recipe-list', RecipeList)
-
-{/* <div id="${recipe.idMeal}">
-                    <img class="rounded-xl" src="${recipe.strMealThumb}" />
-                    <p class="text-md font-bold text-slate-500 mt-3 md:text-xl">${recipe.strMeal}</p>
-                </div> */}
