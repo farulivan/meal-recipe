@@ -11,9 +11,11 @@ class SearchBar extends HTMLElement {
             const recipeList = document.querySelector('recipe-list')
             recipeList.innerHTML = recipeArr.map(recipe => {
                 return `
-                <div id="${recipe.idMeal}">
-                <img class="rounded-xl" src="${recipe.strMealThumb}" />
-                <p class="text-md font-bold text-slate-500">${recipe.strMeal}</p>
+                <div id="${recipe.idMeal}" class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
+                    <div class="overflow-hidden">
+                    <img id="${recipe.idMeal}" class="rounded-t-lg hover:scale-110" src="${recipe.strMealThumb}" alt="${recipe.strMeal} picture">
+                    </div>
+                    <h5 id="${recipe.idMeal}" class="text-sm font-medium text-slate-500 p-3 md:text-xl lg:text-center">${recipe.strMeal}</h5>
                 </div>
                 `
             }).join('')
@@ -21,7 +23,7 @@ class SearchBar extends HTMLElement {
     }
     
     connectedCallback() {
-        this.className = "flex items-center mt-4"
+        this.className = "flex items-center mt-4 lg:w-full"
         this.render()
         const keyword = this.querySelector('#simple-search')
         this.querySelector('#submit-search')

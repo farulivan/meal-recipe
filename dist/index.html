@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Recipe</title>
 <script defer src="main.js"></script></head>
@@ -9,8 +10,10 @@
     <nav-bar></nav-bar>
     <main>
         <intro-section></intro-section>
-        <search-bar></search-bar>
-        <categories-button></categories-button>
+        <section class="lg:flex lg:justify-between lg:gap-6 lg:m-6">
+            <search-bar></search-bar>
+            <categories-button></categories-button>
+        </section>
         <recipe-list></recipe-list>
     </main>
 </body>

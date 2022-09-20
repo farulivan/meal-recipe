@@ -33,21 +33,23 @@ class RecipeList extends HTMLElement {
             
             // show recipe detail
             this.innerHTML = `
-            <div class="col-span-2" id="${recipe.idMeal}">
-                <div class="md:flex">
+            <div class="col-span-2 md:col-span-3" id="${recipe.idMeal}">
+                <div class="md:grid md:grid-cols-2 md:items-center">
                     <img class="rounded-xl" src="${recipe.strMealThumb}" />
-                    <h2 class="text-2xl font-extrabold text-emerald-700 mt-2">${recipe.strMeal}</h3>
-                <div
-                <p class="text-md font-bold text-slate-500">${recipe.strArea} Cuisine</p>
-                <p class="bg-slate-100 w-full font-bold mt-2 p-2 text-center text-emerald-700 border-b-2 border-emerald-700">Ingridients</p>
-                <ul>
-                    ${ingridientsArr.map(ingridient => `
-                        <li class="flex items-center space-x-3 my-3">
-                        <svg class="flex-shrink-0 w-5 h-5 text-emerald-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                        <span>${ingridient[0]} : ${ingridient[1]}</span>
-                        </li>
-                    `).join('')}
-                </ul>
+                    <div class="md:px-6 md:pt-0">
+                        <h2 class="text-2xl font-extrabold text-emerald-700 mt-2 md:text-4xl">${recipe.strMeal}</h2>
+                        <p class="text-md font-bold text-slate-500 md:mt-2">${recipe.strArea} Cuisine</p>
+                        <p class="bg-slate-100 w-full font-bold mt-2 p-2 text-center text-emerald-700 border-b-2 border-emerald-700 md:mt-6">Ingridients</p>
+                        <ul>
+                            ${ingridientsArr.map(ingridient => `
+                                <li class="flex items-center space-x-3 my-3">
+                                <svg class="flex-shrink-0 w-5 h-5 text-emerald-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                <span>${ingridient[0]} : ${ingridient[1]}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
                 <p class="bg-slate-100 w-full font-bold mt-2 p-2 text-center text-emerald-700 border-b-2 border-emerald-700">Directions</p>
                 <ol class="space-y-1 list-inside list-decimal">
                     ${
@@ -75,21 +77,29 @@ class RecipeList extends HTMLElement {
     }
 
     connectedCallback(){
-        this.className = "grid grid-cols-2 gap-4 md:grid-cols-3 gap-6"
+        this.className = "grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:gap-10"
         const recipeList = document.querySelector('recipe-list')
-        recipeList.addEventListener('click', (e) => this.recipeDetail(e.path[1].id))
+        recipeList.addEventListener('click', (e) => this.recipeDetail(e.target.id))
     }
 
     render(){
         this.innerHTML = this._meal.map(recipe => {
             return `
-                <div id="${recipe.idMeal}">
-                    <img class="rounded-xl" src="${recipe.strMealThumb}" />
-                    <p class="text-md font-bold text-slate-500 md:text-xl">${recipe.strMeal}</p>
+                <div id="${recipe.idMeal}" class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
+                    <div class="overflow-hidden">
+                    <img id="${recipe.idMeal}" class="rounded-t-lg hover:scale-110" src="${recipe.strMealThumb}" alt="${recipe.strMeal} picture">
+                    </div>
+                    <h5 id="${recipe.idMeal}" class="text-sm font-medium text-slate-500 p-3 md:text-xl lg:text-center">${recipe.strMeal}</h5>
                 </div>
+
             `
         }).join('')
     }
 }
 
 customElements.define('recipe-list', RecipeList)
+
+{/* <div id="${recipe.idMeal}">
+                    <img class="rounded-xl" src="${recipe.strMealThumb}" />
+                    <p class="text-md font-bold text-slate-500 mt-3 md:text-xl">${recipe.strMeal}</p>
+                </div> */}

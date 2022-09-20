@@ -1,6 +1,6 @@
 class CategoriesButton extends HTMLElement {
     connectedCallback(){
-        this.className = "flex flex-col py-3"
+        this.className = "flex flex-col py-3 lg:w-1/2"
     }
 
     set categories(categories){
@@ -10,13 +10,12 @@ class CategoriesButton extends HTMLElement {
     
     set clickEvent(event){
         this._clickEvent = event
-        
     }
 
     render(){
         this.innerHTML = `
-        <p class="text-md font-medium text-slate-500 mb-3">Select categories</p>
-        <div class="flex overflow-scroll pb-6">
+        <p class="text-md font-medium text-slate-500 mb-3 lg:text-center">Select categories</p>
+        <div class="flex overflow-scroll pt-2 pb-6 lg:pb-10">
         ${this._categories.map(category => {
             return `
             <div>
