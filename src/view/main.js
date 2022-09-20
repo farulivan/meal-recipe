@@ -4,7 +4,7 @@ import '../components/recipe-list'
 const main = () => {
     //styling main element
     const main = document.querySelector('main')
-    main.className = 'm-6'
+    main.className = 'mx-6 mb-4 md:mx-14 lg:mx-20 lg:mt-10'
 
     // for Categories :
     const categoriesElement = document.querySelector('categories-button')

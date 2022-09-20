@@ -34,8 +34,10 @@ class RecipeList extends HTMLElement {
             // show recipe detail
             this.innerHTML = `
             <div class="col-span-2" id="${recipe.idMeal}">
-                <img class="rounded-xl" src="${recipe.strMealThumb}" />
-                <h2 class="text-2xl font-extrabold text-emerald-700 mt-2">${recipe.strMeal}</h3>
+                <div class="md:flex">
+                    <img class="rounded-xl" src="${recipe.strMealThumb}" />
+                    <h2 class="text-2xl font-extrabold text-emerald-700 mt-2">${recipe.strMeal}</h3>
+                <div
                 <p class="text-md font-bold text-slate-500">${recipe.strArea} Cuisine</p>
                 <p class="bg-slate-100 w-full font-bold mt-2 p-2 text-center text-emerald-700 border-b-2 border-emerald-700">Ingridients</p>
                 <ul>
@@ -73,6 +75,7 @@ class RecipeList extends HTMLElement {
     }
 
     connectedCallback(){
+        this.className = "grid grid-cols-2 gap-4 md:grid-cols-3 gap-6"
         const recipeList = document.querySelector('recipe-list')
         recipeList.addEventListener('click', (e) => this.recipeDetail(e.path[1].id))
     }
@@ -82,14 +85,11 @@ class RecipeList extends HTMLElement {
             return `
                 <div id="${recipe.idMeal}">
                     <img class="rounded-xl" src="${recipe.strMealThumb}" />
-                    <p class="text-md font-bold text-slate-500">${recipe.strMeal}</p>
+                    <p class="text-md font-bold text-slate-500 md:text-xl">${recipe.strMeal}</p>
                 </div>
             `
         }).join('')
-        this.className = "grid grid-cols-2 gap-4 mt-5"
     }
 }
 
 customElements.define('recipe-list', RecipeList)
-
-{/* <p class="text-sm font-semibold text-slate-400">${recipe.strArea}</p> */}

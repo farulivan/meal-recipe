@@ -1,21 +1,15 @@
 class NavBar extends HTMLElement {
     connectedCallback() {
-      this.render()
+        this.className = "flex justify-center items-center p-6 lg:shadow-xl"
+        this.render()
     }
   
-    render() {
-      this.innerHTML = `
-        <h3 
-            class="text-lg font-bold"
-        >
+    render() { this.innerHTML = `
+        <h3 class="text-lg font-bold md:text-xl lg:text-2xl">
             meal<span class="font-extrabold">recipe</span>
         </h3>
-      `
-      this.className = "flex justify-center items-center m-6"
-    }
-    
-  
-  }
+    `}
+}
      
-  customElements.define('nav-bar', NavBar);
+customElements.define('nav-bar', NavBar);
   

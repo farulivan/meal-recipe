@@ -1,4 +1,8 @@
 class CategoriesButton extends HTMLElement {
+    connectedCallback(){
+        this.className = "flex flex-col py-3"
+    }
+
     set categories(categories){
         this._categories = categories
         this.render()
@@ -6,11 +10,13 @@ class CategoriesButton extends HTMLElement {
     
     set clickEvent(event){
         this._clickEvent = event
+        
     }
 
     render(){
         this.innerHTML = `
-        <div class="flex overflow-scroll py-5" >
+        <p class="text-md font-medium text-slate-500 mb-3">Select categories</p>
+        <div class="flex overflow-scroll pb-6">
         ${this._categories.map(category => {
             return `
             <div>
@@ -19,7 +25,6 @@ class CategoriesButton extends HTMLElement {
             type="radio"
             class="hidden peer input-categories"
             name="category"
-            
             >
             </input>
             <label 
