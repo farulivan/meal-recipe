@@ -23,9 +23,9 @@ class RecipeList extends HTMLElement {
             const ingridients = []
             const measures = []
             for(let [key, value] of Object.entries(recipe)){
-                if(key.includes('strIngredient') && value !== '' && value !== null && value !== undefined){
+                if(key.includes('strIngredient') && value){
                     ingridients.push(value)
-                } else if(key.includes('strMeasure') && value !== '' && value !== null && value !== undefined){
+                } else if(key.includes('strMeasure') && value){
                     measures.push(value)
                 }
             }
@@ -54,7 +54,7 @@ class RecipeList extends HTMLElement {
                 <ul class="list-disc list-inside">
                     ${
                         _.split(recipe.strInstructions, '\r\n').map(step => {
-                            if(step !== ''){
+                            if(step){
                                 return `<li class="space-x-3 my-3">${step}</li>`
                             }
                                 
